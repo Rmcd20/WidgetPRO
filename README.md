@@ -130,6 +130,78 @@ Recommended:
 uv run python -m watchwidget
 ```
 
+## Reference Timezone
+
+By default, **Portugal** (`Europe/Lisbon`) is the reference timezone. The timeline (hours 0–23) and the blue scrubber follow Portugal’s calendar day — midnight to midnight in Lisbon. This is set in `src/watchwidget/config.py` and does **not** depend on where your PC is located.
+
+### Do you need to change it?
+
+**No** — if you only want to see the correct current time for each country. Someone installing the widget in Madrid, Buenos Aires, Bogotá, or anywhere else will still see accurate times for all cities. No configuration is required.
+
+**Yes** — only if you want the timeline and scrubber to follow a different country’s day instead of Portugal’s. Edit `REF_TZ` in `src/watchwidget/config.py` and use the same value for that city in `CITIES`.
+
+### Example for each default country
+
+**Portugal** (default — no change needed):
+
+```python
+REF_TZ = ZoneInfo("Europe/Lisbon")
+
+CITIES: tuple[City, ...] = (
+    City("Portugal", REF_TZ),
+    ...
+)
+```
+
+The scrubber tracks Lisbon time and the timeline represents Portugal’s day. This is the out-of-the-box setup.
+
+**Madrid (Spain)** — use Madrid as the reference day:
+
+```python
+REF_TZ = ZoneInfo("Europe/Madrid")
+
+CITIES: tuple[City, ...] = (
+    City("Portugal", ZoneInfo("Europe/Lisbon")),
+    City("Madrid", REF_TZ),
+    ...
+)
+```
+
+The scrubber follows Madrid time and the 24-hour timeline is aligned to Spain’s calendar day. Useful if you mainly think in Madrid local time.
+
+**Argentina** — use Buenos Aires as the reference day:
+
+```python
+REF_TZ = ZoneInfo("America/Argentina/Buenos_Aires")
+
+CITIES: tuple[City, ...] = (
+    ...
+    City("Argentina", REF_TZ),
+    ...
+)
+```
+
+The scrubber follows Buenos Aires time and the timeline represents Argentina’s day. The clock for every other country remains correct; only the timeline axis changes.
+
+**Colombia** — use Bogotá as the reference day:
+
+```python
+REF_TZ = ZoneInfo("America/Bogota")
+
+CITIES: tuple[City, ...] = (
+    ...
+    City("Colombia", REF_TZ),
+)
+```
+
+The scrubber follows Bogotá time and the timeline represents Colombia’s day. Same idea: times stay accurate everywhere; only the reference axis moves.
+
+After any change, restart the widget:
+
+```powershell
+uv run python -m watchwidget
+```
+
 ## Start Automatically With Windows (Optional)
 
 Use this only if you want the widget to open automatically every time you start the PC.

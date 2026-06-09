@@ -1,12 +1,12 @@
 # WatchWidget
 
-Desktop world clock widget for Windows 11.
+Desktop world clock widget for Windows 10/11.
 
 The app is a small PySide6 widget that shows Portugal, Madrid, Argentina and Colombia in 24-hour format, with a synchronized day/night timeline.
 
 ## Requirements
 
-- Windows 11
+- Windows 10 or Windows 11
 - PowerShell
 - Git
 - Python 3.10 or newer
@@ -51,7 +51,7 @@ uv run python -m watchwidget
 
 Press `Esc` to close the widget.
 
-## Corporate Or Restricted PowerShell Install
+## Restricted PowerShell Install
 
 1. Open the official releases page:
 
@@ -193,7 +193,7 @@ $env:Path
 
 ### PowerShell blocks the installer
 
-Use the manual ZIP installation described in **Corporate Or Restricted PowerShell Install**.
+Use the manual ZIP installation described in **Restricted PowerShell Install**.
 
 ### `.venv\Scripts\activate` is blocked
 

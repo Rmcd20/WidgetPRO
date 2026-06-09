@@ -4,6 +4,12 @@ Desktop world clock widget for Windows 10/11.
 
 The app is a small PySide6 widget that shows Portugal, Madrid, Argentina and Colombia in 24-hour format, with a synchronized day/night timeline.
 
+## Preview
+
+[![WatchWidget desktop preview](assets/watchwidget-preview.png)](assets/watchwidget-preview.png)
+
+[![WatchWidget desktop preview with current time](assets/image.png)](assets/image.png)
+
 ## Requirements
 
 - Windows 10 or Windows 11
